@@ -1,7 +1,7 @@
 class ColumnBlockContainer{
     val content: MutableList<Column> = mutableListOf()
     @ArcticleDSL
-    inline fun pageBlock(block: ColumnBuilder.()->Unit)=
+    inline fun column(block: ColumnBuilder.()-> Unit)=
         ColumnBuilder().apply(block).build().also{
             content.add(it)
         }
@@ -9,7 +9,7 @@ class ColumnBlockContainer{
 class RowBlockContainer{
     val content: MutableList<Row> = mutableListOf()
     @ArcticleDSL
-    inline fun pageBlock(block: RowBuilder.()->Unit)=
+    inline fun row(block: RowBuilder.()->Unit)=
         RowBuilder().apply(block).build().also{
             content.add(it)
         }
@@ -17,7 +17,7 @@ class RowBlockContainer{
 class CellBlockContainer{
     val content: MutableList<Cell> = mutableListOf()
     @ArcticleDSL
-    inline fun pageBlock(block: CellBuilder.()->Unit)=
+    inline fun cell(block: CellBuilder.()->Unit)=
         CellBuilder().apply(block).build().also{
             content.add(it)
         }

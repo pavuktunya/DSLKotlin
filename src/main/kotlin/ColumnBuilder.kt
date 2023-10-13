@@ -2,7 +2,7 @@ import kotlin.reflect.KClass
 
 @ArcticleDSL
 class ColumnBuilder{
+    var type: KClass<*> = String::class
     var title: String=""
-    var type: String = "String::class"
     fun build()=Column(title, type)
 }

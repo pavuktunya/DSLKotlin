@@ -1,15 +1,15 @@
 import kotlin.reflect.KClass
 @ArcticleDSL
 class TableBuilder {
-    var column: MutableList<Column> = mutableListOf()
-    var row: MutableList<Row> = mutableListOf()
-    fun columnBlocks(block: ColumnBlockContainer.() -> Unit){
+    var columnBlocks: MutableList<Column> = mutableListOf()
+    var rowBlocks: MutableList<Row> = mutableListOf()
+    fun column(block: ColumnBlockContainer.() -> Unit){
         val columnBlockContainer = ColumnBlockContainer().apply(block)
-        column.addAll(columnBlockContainer.content)
+        columnBlocks.addAll(columnBlockContainer.content)
     }
-    fun rowBlocks(block: RowBlockContainer.() -> Unit){
+    fun row(block: RowBlockContainer.() -> Unit){
         val rowBlockContainer = RowBlockContainer().apply(block)
-        row.addAll(rowBlockContainer.content)
+        rowBlocks.addAll(rowBlockContainer.content)
     }
-    fun build()=Table(column, row)
+    fun build()=Table(columnBlocks, rowBlocks)
 }

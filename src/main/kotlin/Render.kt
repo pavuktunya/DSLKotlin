@@ -12,7 +12,7 @@ class InstantRender(val programName:String):Rendering{
 }
 fun Render(table: Table, r: Render){
     table.row.forEach {
-        it.row.forEach{r.render(it.content)}
+        it.cell.forEach{r.render(it.content)}
         println("ROW")
     }
 }
