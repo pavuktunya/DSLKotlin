@@ -5,7 +5,6 @@ class TableGenerator {
         column("ID", Int::class)
         column("Name", String::class)
         column("Age", Int::class)
-
         row {
             cell("ID", 1)
             cell("Name", "Alice")
@@ -18,11 +17,11 @@ class TableGenerator {
         }
     }.render()
 }
-fun column(_title: String, _type: KClass<*>)=column{
+fun TableBuilder.column(_title: String, _type: KClass<*>)=toColumn{
     title=_title
     type=_type
 }
-fun cell(_title: String, _content: Any)=cell{
+fun RowBuilder.cell(_title: String, _content: Any)=toCell{
     title=_title
     content=_content.toString()
 }

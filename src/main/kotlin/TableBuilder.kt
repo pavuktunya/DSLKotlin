@@ -3,13 +3,17 @@ import kotlin.reflect.KClass
 class TableBuilder {
     var columnBlocks: MutableList<Column> = mutableListOf()
     var rowBlocks: MutableList<Row> = mutableListOf()
-    fun column(block: ColumnBlockContainer.() -> Unit){
-        val columnBlockContainer = ColumnBlockContainer().apply(block)
-        columnBlocks.addAll(columnBlockContainer.content)
+    @ArcticleDSL
+    inline fun toColumn(block: ColumnBuilder.() -> Unit){
+        val columnBuilder = ColumnBuilder().apply(block).build()
+        columnBlocks.add(columnBuilder)
     }
-    fun row(block: RowBlockContainer.() -> Unit){
-        val rowBlockContainer = RowBlockContainer().apply(block)
-        rowBlocks.addAll(rowBlockContainer.content)
+    @ArcticleDSL
+    inline fun row(block: RowBuilder.() -> Unit){
+        val rowBuilder = RowBuilder().apply(block).build()
+        rowBlocks.add(rowBuilder)
     }
-    fun build()=Table(columnBlocks, rowBlocks)
+    fun build():Table{
+        return Table(columnBlocks, rowBlocks)
+    }
 }

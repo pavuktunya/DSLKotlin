@@ -1,9 +1,10 @@
 @ArcticleDSL
 class RowBuilder{
-    var row: MutableList<Cell> = mutableListOf()
-    fun cell(block: CellBlockContainer.() -> Unit){
-        val cellBlockContainer = CellBlockContainer().apply(block)
-        row.addAll(cellBlockContainer.content)
+    var cells: MutableList<Cell> = mutableListOf()
+    @ArcticleDSL
+    inline fun toCell(block: CellBuilder.() -> Unit){
+        val cellBuilder = CellBuilder().apply(block).build()
+        cells.add(cellBuilder)
     }
-    fun build()=Row(row)
+    fun build()=Row(cells)
 }
