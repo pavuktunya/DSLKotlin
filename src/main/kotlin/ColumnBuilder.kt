@@ -1,5 +1,4 @@
 import kotlin.reflect.KClass
-
 @ArcticleDSL
 class ColumnBuilder{
     var type: KClass<*> = String::class

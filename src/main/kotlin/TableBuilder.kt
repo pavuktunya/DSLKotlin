@@ -1,4 +1,3 @@
-import kotlin.reflect.KClass
 @ArcticleDSL
 class TableBuilder {
     var columnBlocks: MutableList<Column> = mutableListOf()

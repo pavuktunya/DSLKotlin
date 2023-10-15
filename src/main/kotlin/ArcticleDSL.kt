@@ -1,2 +1,2 @@
 @ArcticleDSL
-fun table(x: TableBuilder.()-> Unit):Table = TableBuilder().apply(x).build()
+fun table(block: TableBuilder.()-> Unit):Table = TableBuilder().apply(block).build()

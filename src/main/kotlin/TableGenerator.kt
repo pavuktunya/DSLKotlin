@@ -1,5 +1,4 @@
 import kotlin.reflect.KClass
-
 class TableGenerator {
     fun generateTable():Table= table{
         column("ID", Int::class)
